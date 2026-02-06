@@ -3,7 +3,6 @@
   "devCommand": "next dev",
   "installCommand": "npm ci",
   "framework": "nextjs",
-  "nodeVersion": "18.x",
   "env": {
     "DATABASE_URL": "@database_url",
     "NEXTAUTH_URL": "@nextauth_url",
