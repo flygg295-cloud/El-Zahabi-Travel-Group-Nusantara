@@ -1,12 +1,8 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Navbar from '@/components/navbar';
 import SearchBar from '@/components/search/search-bar';
 import Footer from '@/components/footer';
-
-export const metadata: Metadata = {
-  title: 'El-Zahabi Travel - Book Flights and Hotels',
-  description: 'Search and book flights and hotels for your next adventure',
-};
 
 export default function Home() {
   return (

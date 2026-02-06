@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { SessionProvider } from 'next-auth/react';
+import { Providers } from './providers';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   description: 'Book flights and hotels easily with El-Zahabi Travel',
   keywords: 'travel, booking, flights, hotels, tickets',
   authors: [{ name: 'El-Zahabi Travel' }],
+  openGraph: {
+    title: 'El-Zahabi Travel - Travel Booking Platform',
+    description: 'Book flights and hotels easily with El-Zahabi Travel',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
@@ -21,9 +26,9 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body>
-        <SessionProvider>
+        <Providers>
           {children}
-        </SessionProvider>
+        </Providers>
       </body>
     </html>
   );
