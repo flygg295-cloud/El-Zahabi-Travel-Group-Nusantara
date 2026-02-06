@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -41,12 +41,12 @@ model Account {
   type               String
   provider           String
   providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
+  refresh_token      String?
+  access_token       String?
   expires_at         Int?
   token_type         String?
   scope              String?
-  id_token           String?  @db.Text
+  id_token           String?
   session_state      String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -97,8 +97,8 @@ model Ticket {
   totalSeats   Int        @default(1)
   availableSeats Int?
   image        String?    // URL to flight/hotel image
-  description  String?    @db.Text
-  amenities    String[]   // JSON array of amenities
+  description  String?    // Flight/hotel description
+  amenities    String?    // JSON array of amenities (stored as JSON string)
   rating       Float      @default(0)
   reviews      Int        @default(0)
   
@@ -132,7 +132,7 @@ model Booking {
   
   // Booking details
   quantity          Int        @default(1)
-  specialRequests   String?    @db.Text
+  specialRequests   String?    // Special requests/notes
   
   // Pricing
   subtotal          Float
@@ -149,7 +149,7 @@ model Booking {
   
   // Booking status
   status            String     @default("PENDING")     // PENDING, CONFIRMED, CANCELLED, COMPLETED
-  notes             String?    @db.Text
+  notes             String?    // Additional notes
   
   createdAt         DateTime   @default(now())
   updatedAt         DateTime   @updatedAt
